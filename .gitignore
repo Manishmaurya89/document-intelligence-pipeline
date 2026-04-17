@@ -1,0 +1,13 @@
+__pycache__/
+*.pyc
+venv/
+.env
+*.log
+
+# outputs (optional but recommended)
+dataset.pdf
+output.pdf
+extracted_text.txt
+docling_output.json
+structured_output.json
+entities.json
