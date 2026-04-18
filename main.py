@@ -11,20 +11,20 @@ def main():
 
     print(f"\nGenerating document on: '{topic}' ({pages} page(s))...\n")
 
-    # ─────────────────────────────────────────
-    # STEP 1: Generate content via Ollama LLM
-    # ─────────────────────────────────────────
+
+    # Generate content via Ollama LLM
+
     data = generate_document(topic, pages)
     print("Document generated successfully.\n")
 
-    # ─────────────────────────────────────────
-    # STEP 2: Save as PDF using ReportLab
-    # ─────────────────────────────────────────
+
+    # Save as PDF using ReportLab
+
     save_pdf(data, topic)
 
-    # ─────────────────────────────────────────
-    # STEP 3: Parse PDF with Docling
-    # ─────────────────────────────────────────
+
+    # Parse PDF with Docling
+
     print("Parsing PDF with Docling...")
     doc_data = extract_data("dataset.pdf")
 
@@ -42,9 +42,9 @@ def main():
 
     print(f"Docling extracted {len(sections)} section(s).\n")
 
-    # ─────────────────────────────────────────
-    # STEP 4: Named Entity Recognition — GLiNER
-    # ─────────────────────────────────────────
+
+    # Named Entity Recognition 
+
     print("Running GLiNER entity extraction...")
     entities = extract_entities(text)
 
@@ -56,10 +56,10 @@ def main():
     with open("entities.json", "w", encoding="utf-8") as f:
         json.dump(entities, f, indent=2, ensure_ascii=False)
 
-    # ─────────────────────────────────────────
+
     # STEP 5: Summary
-    # ─────────────────────────────────────────
-    print("\n✅ Pipeline complete. Output files:")
+
+    print("\n Pipeline complete. Output files:")
     print("   • dataset.pdf            — generated document")
     print("   • extracted_text.txt     — plain text from Docling")
     print("   • docling_output.json    — full Docling JSON")
